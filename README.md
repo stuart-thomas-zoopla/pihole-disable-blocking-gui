@@ -19,7 +19,7 @@ Once you had the password has, run the following command on the container/vm you
 
 You will then be prompted for a comma separated list of IP addresses for each pihole instance, this should be provided like so
 
-```192.168.0.12, 192.168.0.13``` etc.
+```192.168.0.12,192.168.0.13``` etc.
 
 You will then be prompted for the password hash. Currently this application assumes all instances share a common password.
 
