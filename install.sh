@@ -24,7 +24,7 @@ EOF
 
 install_packages() {
     apt update && apt upgrade -y
-    apt install -y git nodejs npm
+    apt install -y git nodejs npm curl
     }
 
 setup_repository() {
