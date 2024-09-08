@@ -29,7 +29,7 @@ app.get('/disable', (req, res) => {
             }
         });
 
-        res.json({ status: 'success', results });
+        res.json({ status: 'success' });
     });
 });
 
