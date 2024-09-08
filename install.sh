@@ -11,9 +11,6 @@ update_env() {
     local ip_csv=$1
     local auth=$2
     local seconds=$3
-    echo "IP_CSV=$ip_csv" > /dev/null
-    echo "AUTH_TOKEN=$auth" > /dev/null
-    echo "SECONDS=$seconds" > /dev/null
     cat <<EOF >.env
 IP_CSV=$ip_csv
 AUTH_TOKEN=$auth
