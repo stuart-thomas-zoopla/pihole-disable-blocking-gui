@@ -13,13 +13,15 @@ On your pihole instance run the following command and keep note of the output, t
 
 ```cat /etc/pihole/setupVars.conf | grep WEBPASSWORD```
 
-Once you had the password has, run the following command on the container/vm you want to this applicaiton from. Note, it will run the node server on port 3000.
+Once you have the password hash, run the following command on the container/vm you want to this applicaiton from. Note, it will run the node server on port 3000.
 
 ```wget https://raw.githubusercontent.com/stuart-thomas-zoopla/pihole-quick-disable/main/install.sh && bash install.sh```
 
 You will then be prompted for a comma separated list of IP addresses for each pihole instance, this should be provided like so
 
 ```192.168.0.12,192.168.0.13``` etc.
+
+It should be possible to run this on the same machine as the pihole itself, in which case you should be able to list the ip simply as ```localhost```
 
 You will then be prompted for the password hash. Currently this application assumes all instances share a common password.
 
