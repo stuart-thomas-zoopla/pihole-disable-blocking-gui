@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const app = express();
 
 app.use(cors());
-dotenv.config({path:__dirname+'/.env'});
+dotenv.config({ path: __dirname + '/.env' });
 
 const seconds = process.env.SECONDS;
 const ip_array = process.env.IP_CSV.split(',');
@@ -24,13 +24,13 @@ app.get('/disable', (req, res) => {
         exec(command, (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error executing command for IP ${ip}: ${error}`);
-                return res.json({ status: 'failure', error: stderr });
+            } else {
+                console.log(`Success for IP ${ip}: ${stdout}`);
             }
-            console.log(`Success for IP ${ip}: ${stdout}`);
         });
-    });
 
-    res.json({ status: 'success' });
+        res.json({ status: 'success', results });
+    });
 });
 
 const port = 3000;
