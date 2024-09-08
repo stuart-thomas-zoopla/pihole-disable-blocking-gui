@@ -13,7 +13,7 @@ On your pihole instance run the following command and keep note of the output, t
 
 ```cat /etc/pihole/setupVars.conf | grep WEBPASSWORD```
 
-Once you have the password hash, run the following command on the container/vm you want to this applicaiton from. Note, it will run the node server on port 3000.
+Once you have the password hash, run the following command on the container/vm you want to run this applicaiton from. Note, it will run the node server on port 3000.
 
 ```wget https://raw.githubusercontent.com/stuart-thomas-zoopla/pihole-quick-disable/main/install.sh && bash install.sh```
 
