@@ -11,6 +11,9 @@ update_env() {
     local ip_csv=$1
     local auth=$2
     local seconds=$3
+    echo "IP_CSV=$ip_csv" > /dev/null
+    echo "AUTH_TOKEN=$auth" > /dev/null
+    echo "SECONDS=$seconds" > /dev/null
     cat <<EOF >.env
 IP_CSV=$ip_csv
 AUTH_TOKEN=$auth
@@ -45,7 +48,7 @@ main() {
         prompt_variable_values
         install_packages
         setup_repository
-        update_env
+        update_env "$ip_csv" "$auth" "$seconds"
         node /var/www/html/disable/server.js
         echo "Installation is complete and the server is running on port 3000."
     done

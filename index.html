@@ -30,12 +30,12 @@
         function disableBlocking(event) {
             event.preventDefault();
             const button = document.getElementById('disableButton');
-            fetch('http://localhost:3000/seconds')
+            fetch('/seconds')
                 .then(response => response.json())
                 .then(data => {
                     const seconds = data.seconds;
 
-                fetch('http://localhost:3000/disable')
+                fetch('/disable')
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 'success') {
