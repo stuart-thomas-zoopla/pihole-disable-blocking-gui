@@ -1,0 +1,131 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* Center content vertically */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #000;
+    color: #bb86fc;
+
+}
+
+body.light-mode {
+    background-color: #ffffff;
+    color: #333333;
+
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center; /* Center the heading text */
+}
+
+/* Button Styles */
+.button {
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 250px; /* Fixed width */
+    height: 50px; /* Fixed height */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Center the button horizontally */
+    outline: none; /* Remove default outline */
+}
+
+.button.dark-mode {
+    background-color: #bb86fc; /* Light purple color for dark mode */
+    color: #000;
+}
+
+.button.dark-mode:hover {
+    background-color: #0054AD;
+    color: #ffffff; /* Ensure text color contrast */
+}
+
+.button.light-mode {
+    background-color: #0054AD; /* Blue color for light mode */
+    color: #ffffff;
+}
+
+.button.light-mode:hover {
+    background-color: #6500b3;
+    color: #ffffff; /* Ensure text color contrast */
+}
+
+.button:focus {
+    outline: 2px solid #ffffff; /* Add a focus outline for accessibility */
+    outline-offset: 2px;
+}
+
+.button:disabled {
+    background-color: #ccc;
+    color: #333; /* Change text color for better contrast */
+    cursor: not-allowed;
+}
+
+.button:disabled:hover {
+    background-color: #ccc; /* Keep the same background color when disabled */
+    color: #333; /* Ensure text color contrast */
+}
+
+/* Theme Toggle Button */
+.theme-toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #ccc;
+    border-radius: 20px;
+    padding: 5px;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.theme-toggle span {
+    font-size: 1.5em;
+    transition: color 0.3s ease, filter 0.3s ease;
+}
+
+.theme-toggle .inactive {
+    filter: grayscale(100%);
+}
+
+.theme-toggle-slider {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: left 0.3s ease;
+}
+
+body.light-mode .theme-toggle-slider {
+    left: 45px;
+}

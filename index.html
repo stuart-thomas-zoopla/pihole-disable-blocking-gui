@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disable Ad Blocking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="theme-toggle-container" id="themeToggleButton" onclick="toggleTheme()">
+        <div class="theme-toggle">
+            <span class="dark-mode-icon">🌙</span>
+            <span class="light-mode-icon inactive">☀️</span>
+        </div>
+    </div>
+    <div>
+        <h1>Disable Ad Blocking</h1>
+        <div>
+            <button class="button" id="disableButton" onclick="disableBlocking(event)">Disable</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentTheme = localStorage.getItem('theme') || 'dark-mode';
+            document.body.classList.add(currentTheme);
+            updateThemeToggleButton(currentTheme);
+            updateButtonTheme(currentTheme);
+        });
+
+        function disableBlocking(event) {
+            event.preventDefault();
+            const button = document.getElementById('disableButton');
+            fetch('http://localhost:3000/seconds')
+                .then(response => response.json())
+                .then(data => {
+                    const seconds = data.seconds;
+
+                fetch('http://localhost:3000/disable')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            let seconds = 60;
+                            button.textContent = `Ad blocking disabled for ${seconds} seconds`;
+                            button.disabled = true;
+
+                            const countdown = setInterval(() => {
+                                seconds--;
+                                button.textContent = `Ad blocking disabled for ${seconds} seconds`;
+
+                                if (seconds <= 0) {
+                                    clearInterval(countdown);
+                                    button.textContent = 'Disable';
+                                    button.disabled = false;
+                                }
+                            }, 1000);
+                        } else {
+                            button.textContent = 'Failed to disable ad blocking.';
+                            button.className = 'error';
+                            button.disabled = false; 
+                        }
+                    })
+                    .catch(error => {
+                        button.textContent = 'Error: ' + error;
+                        button.className = 'error';
+                        button.disabled = false;
+                    });
+            })}
+
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+            const newTheme = currentTheme === 'dark-mode' ? 'light-mode' : 'dark-mode';
+            body.classList.remove(currentTheme);
+            body.classList.add(newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeToggleButton(newTheme);
+            updateButtonTheme(newTheme);
+        }
+
+        function updateThemeToggleButton(theme) {
+            const darkModeIcon = document.querySelector('.dark-mode-icon');
+            const lightModeIcon = document.querySelector('.light-mode-icon');
+            if (theme === 'dark-mode') {
+                darkModeIcon.classList.remove('inactive');
+                lightModeIcon.classList.add('inactive');
+            } else {
+                darkModeIcon.classList.add('inactive');
+                lightModeIcon.classList.remove('inactive');
+            }
+        }
+
+        function updateButtonTheme(theme) {
+            const button = document.getElementById('disableButton');
+            if (theme === 'dark-mode') {
+                button.classList.add('dark-mode');
+                button.classList.remove('light-mode');
+            } else {
+                button.classList.add('light-mode');
+                button.classList.remove('dark-mode');
+            }
+        }
+    </script>
+</body>
+</html>
