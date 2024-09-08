@@ -1,12 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const { exec } = require('child_process');
-const path = require('path');
 const dotenv = require('dotenv');
 const app = express();
 
 app.use(cors());
-dotenv.config();
+dotenv.config({path:__dirname+'/.env'});
 
 const seconds = process.env.SECONDS;
 const ip_array = process.env.IP_CSV.split(',');
