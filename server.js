@@ -12,7 +12,7 @@ const seconds = process.env.SECONDS;
 const ip_array = process.env.IP_CSV.split(',');
 const disableApi = `admin/api.php?disable=${seconds}&auth=${process.env.AUTH_TOKEN}`;
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 app.get('/seconds', (req, res) => {
     res.json({ seconds });
