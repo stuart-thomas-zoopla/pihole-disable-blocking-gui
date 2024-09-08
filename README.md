@@ -4,8 +4,9 @@ A simple web application that provides a user freindly way to temporarily disabl
 ## Why do you want this?
 This is particular useful when you have users who sometimes want to interact with things like googles sponsored links etc. It provides a simple GUI for them to have access to temporarily disable adblocking. It is particularly useful when you are running multiple instances of pihole as it will disable across all instances at the same time.
 
-It also comes with dark mode and light mode :D 
-![dark-mode](https://github.com/user-attachments/assets/fc4bc2e3-6078-4181-90ab-d62a8d3e2e6e)  ![light-mode](https://github.com/user-attachments/assets/9647c74b-a739-4862-aca1-4780fc1c5d32)
+It also comes with dark mode and light mode :grin:
+![modes](https://github.com/user-attachments/assets/1fc06a9c-f0ba-4322-bffe-3e5902825771)
+
 
 ## How to install
 On your pihole instance run the following command and keep note of the output, this will be required when running the install script.
